@@ -3,17 +3,23 @@
     <h1 class="ui dividing header">
       Dale's Timer
     </h1>
-    <div>
-      <Clock/>
+    <div class="ui two column centered grid">
+      <div class="center aligned column">
+        <Clock/>
+      </div>
+      <div class="center aligned column">
+        <Pomodoro/>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Clock from './Clock.vue'
+import Pomodoro from './Pomodoro.vue'
 
 export default {
-  components: {Clock}
+  components: {Clock, Pomodoro}
 }
 </script>
 
