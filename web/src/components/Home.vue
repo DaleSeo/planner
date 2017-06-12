@@ -3,15 +3,17 @@
     <h1 class="ui dividing header">
       Dale's Timer
     </h1>
-    <p>
-      Something
-    </p>
+    <div>
+      <Clock/>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
+import Clock from './Clock.vue'
 
+export default {
+  components: {Clock}
 }
 </script>
 
