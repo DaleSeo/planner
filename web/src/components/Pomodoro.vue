@@ -12,6 +12,12 @@
       <button class="ui mini icon button" @click="pause">
         <i class="pause icon"/>
       </button>
+      <button class="ui mini icon button" @click="backward">
+        <i class="step backward icon"/>
+      </button>
+      <button class="ui mini icon button" @click="forward">
+        <i class="step forward icon"/>
+      </button>
     </div>
     <br/>
     <div class="ui right labeled input">
@@ -25,12 +31,18 @@
 </template>
 
 <script>
-const config = {
-  workDuration: 25,
-  breakDuration: 5
+const WORK_MODE = {
+  duration: 25 * 60,
+  title: 'Work',
+  icon: 'student'
 }
 
-const WORK = 0, BREAK = 1
+const BREAK_MODE = {
+  duration: 5 * 60,
+  title: 'Break',
+  icon: 'coffee'
+}
+
 const STOP = 0, PLAYING = 1, PAUSED = 2
 
 function zeroFill (n) {
@@ -40,7 +52,7 @@ function zeroFill (n) {
 export default {
   data () {
     return {
-      mode: WORK,
+      mode: WORK_MODE,
       state: STOP,
       timer: null,
       remaining: 25 * 60
@@ -57,10 +69,10 @@ export default {
       return zeroFill(this.remaining % 60)
     },
     title () {
-      return this.mode === WORK ? 'WORK' : 'BREAK'
+      return this.mode.title
     },
     icon () {
-      return this.mode === WORK ? 'lab' : 'coffee'
+      return this.mode.icon
     }
   },
   created () {
@@ -81,20 +93,27 @@ export default {
         clearInterval(this.timer)
       }
     },
+    backward () {
+      console.log('#backward')
+      this.remaining = this.mode.duration
+    },
+    forward () {
+      console.log('#forward')
+      this.remaining = 0
+    },
     tick () {
       if (this.remaining <= 0) {
-        console.log('remaining:', )
         this.toggleMode()
         this.notify()
       }
       this.remaining--
     },
     toggleMode () {
-      this.mode = this.mode === WORK ? BREAK : WORK
-      this.remaining = this.mode === WORK ? 25 * 60 : 5 * 60
+      this.mode = this.mode === WORK_MODE ? BREAK_MODE : WORK_MODE
+      this.remaining = this.mode.duration
     },
     notify () {
-      if (this.mode === WORK) {
+      if (this.mode === WORK_MODE) {
         new Notification('It\'s time to work!')
       } else {
         new Notification('It\'s time to break!')
