@@ -18,7 +18,7 @@
         v-for="task in tasks"
       />
     </div>
-    <pre>{{tasks}}</pre>
+    <!-- <pre>{{tasks}}</pre> -->
   </div>
 </template>
 

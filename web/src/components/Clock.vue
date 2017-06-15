@@ -1,6 +1,7 @@
 <template>
-  <div class="ui circular segment">
-    <h2 class="ui header">
+  <div class="ui segment">
+    <h2 class="ui center aligned icon header">
+      <i class="wait icon"/>
       {{time | formatTime}}
       <div class="sub header">PM</div>
     </h2>
@@ -11,7 +12,7 @@
 export default {
   filters: {
     formatTime (time) {
-      return moment(time).format('HH:mm:ss')
+      return moment(time).format('HH:mm')
     }
   },
   data () {
