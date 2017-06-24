@@ -29,9 +29,9 @@
       </button>
     </div>
     <Settings :settings="settings" v-if="showSettings"/>
-    <pre>
+    <!-- <pre>
       {{ {mode, state, timer, remaining} }}
-    </pre>
+    </pre> -->
   </div>
 </template>
 
