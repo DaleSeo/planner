@@ -1,7 +1,7 @@
 <template>
   <div class="ui container">
     <h1 class="ui dividing header">
-      Dale's Planner
+      Planner
     </h1>
     <div class="ui three column centered grid">
       <div class="center aligned column">
